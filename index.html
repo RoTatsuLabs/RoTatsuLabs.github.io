@@ -4,66 +4,84 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Dermaga Port</title>
+<title>Dermaga Port: katalog port Android native</title>
+<script>
+try { var t = localStorage.getItem("dermaga-port:theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
-<div class="shell">
-  <aside id="drawer" class="drawer" aria-label="Navigasi">
-    <div class="drawer-head">
-      <span class="brand">Dermaga Port</span>
-      <button id="drawer-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup menu"></button>
-    </div>
-    <nav id="drawer-nav" class="drawer-nav"></nav>
-  </aside>
-  <div id="scrim" class="scrim"></div>
-  <div class="content">
-    <header class="appbar">
-      <button id="menu" class="icon-btn tonal menu-btn" type="button" data-icon="menu" aria-label="Buka menu"></button>
-      <span class="appbar-title">Dermaga Port</span>
-    </header>
-    <div class="search" role="search">
-      <span class="lead" data-icon="search"></span>
-      <input id="q" type="search" placeholder="Cari game atau developer" aria-label="Cari" autocomplete="off">
-      <button id="clear" class="icon-btn" type="button" data-icon="close" aria-label="Hapus pencarian" hidden></button>
-    </div>
-    <section class="view-head">
-      <h1 id="view-title"></h1>
-      <span id="count" class="pill" aria-live="polite"></span>
-    </section>
-    <div class="controls">
-      <div id="seg" class="seg" role="group" aria-label="Urutkan"></div>
-      <button id="reverse" class="icon-btn tonal" type="button" data-icon="sort" aria-label="Balik urutan" aria-pressed="false"></button>
-    </div>
-    <main>
-      <div id="status" class="status" aria-live="polite"></div>
-      <ul id="list" class="list"></ul>
-      <div id="more" class="more"></div>
-      <div id="empty" class="empty" hidden>
-        <p>Tidak ada hasil yang cocok.</p>
-        <button id="reset" class="btn tonal" type="button">Reset pencarian</button>
+<a class="skip" href="#list">Lewati ke daftar game</a>
+<div id="app" class="app">
+  <nav id="rail" class="rail" aria-label="Navigasi utama">
+    <div class="rail-top">
+      <div class="rail-head">
+        <button id="rail-toggle" class="icon-btn" type="button" data-icon="menu" aria-label="Buka menu" aria-expanded="false" aria-controls="rail"></button>
+        <span class="rail-brand">Dermaga Port</span>
       </div>
-    </main>
-    <footer class="foot">Data dari komunitas NAPL (Fe2rr) dan sampul dari LaunchBox. Situs ini tidak berafiliasi dengan keduanya.</footer>
+      <button id="rail-fab" class="fab rail-fab" type="button"><span data-icon="search"></span><span class="fab-label">Cari game</span></button>
+    </div>
+    <div id="rail-nav" class="rail-nav"></div>
+  </nav>
+  <div id="scrim" class="scrim"></div>
+  <div id="content" class="content">
+    <div class="page">
+      <header class="appbar">
+        <button id="menu" class="menu-btn" type="button" aria-expanded="false" aria-controls="rail"><span data-icon="menu"></span><span>Menu</span></button>
+        <p class="appbar-title">Dermaga Port</p>
+        <button id="theme" class="icon-btn" type="button" data-icon="auto"></button>
+      </header>
+      <div class="search" role="search">
+        <span class="lead" data-icon="search"></span>
+        <div class="field-wrap">
+          <input id="q" type="search" placeholder=" " autocomplete="off" enterkeyhint="search">
+          <label for="q">Cari game atau developer</label>
+        </div>
+        <button id="clear" class="icon-btn" type="button" data-icon="close" aria-label="Hapus pencarian" hidden></button>
+      </div>
+      <section class="view-head" aria-labelledby="view-title">
+        <h1 id="view-title"></h1>
+        <p id="count" class="count" aria-live="polite"></p>
+      </section>
+      <div class="controls">
+        <div id="seg" class="seg" role="group" aria-label="Urutkan daftar"></div>
+        <button id="reverse" class="icon-btn toggle" type="button" data-icon="sort" aria-label="Balik urutan" aria-pressed="false"></button>
+      </div>
+      <section id="recent" class="recent" aria-labelledby="recent-title" hidden>
+        <h2 id="recent-title">Terbaru ditambah</h2>
+        <ul id="carousel" class="carousel"></ul>
+      </section>
+      <main id="main">
+        <div id="status" class="status"></div>
+        <h2 id="list-title" class="sr-only">Daftar game</h2>
+        <ul id="list" class="list" tabindex="-1" aria-labelledby="list-title"></ul>
+        <div id="more" class="more"></div>
+        <div id="empty" class="empty" hidden>
+          <p id="empty-text"></p>
+          <button id="reset" class="btn tonal" type="button">Hapus pencarian</button>
+        </div>
+      </main>
+      <footer class="foot">Data dari komunitas NAPL (Fe2rr) dan sampul dari LaunchBox. Situs ini tidak berafiliasi dengan keduanya.</footer>
+    </div>
   </div>
 </div>
-<button id="fab" class="fab" type="button" data-icon="up" aria-label="Kembali ke atas"></button>
+<button id="fab" class="fab fab-float" type="button"><span data-icon="search"></span><span class="fab-label">Cari game</span></button>
 <div id="snack" class="snack" role="status"></div>
-<dialog id="sheet" aria-label="Detail game">
+<dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet">
     <div class="handle" aria-hidden="true"></div>
     <div class="sheet-bar">
-      <button id="sheet-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup"></button>
-      <button id="share" class="icon-btn" type="button" data-icon="share" aria-label="Bagikan"></button>
+      <button id="sheet-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup detail"></button>
+      <button id="share" class="icon-btn" type="button" data-icon="share" aria-label="Bagikan tautan"></button>
     </div>
     <div id="sheet-body" class="sheet-body"></div>
   </div>
 </dialog>
-<script src="config.js?v=3"></script>
-<script src="data.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="config.js?v=4"></script>
+<script src="data.js?v=4"></script>
+<script src="app.js?v=4" defer></script>
 </body>
 </html>
