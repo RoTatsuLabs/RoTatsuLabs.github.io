@@ -1,10 +1,6 @@
 const CONFIG = {
   title: "Dermaga Port",
-  subtitle: "Katalog port Android native buatan komunitas.",
-  sortLabels: {
-    added: "Terbaru ditambah",
-    updated: "Baru diperbarui",
-    compat: "Paling mulus",
-    az: "A-Z"
-  }
+  sheetUrl: "https://docs.google.com/spreadsheets/d/1CO7dH7mbj9sl67g4e94wczHESp0NAsOa7_chKKii9OA/export?format=csv",
+  cacheKey: "dermaga-port:csv",
+  pageSize: 24
 };

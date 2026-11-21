@@ -3,44 +3,67 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Dermaga Port</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
-<header class="hero">
-  <h1 id="title"></h1>
-  <p id="subtitle" class="sub"></p>
-  <p id="stats" class="stats"></p>
-  <input id="q" class="field search" type="search" placeholder="Cari game, platform, atau developer" aria-label="Cari">
-</header>
-<nav id="platforms" class="platforms" aria-label="Platform"></nav>
-<section class="tools">
-  <select id="genre" class="field" aria-label="Genre"></select>
-  <select id="sort" class="field" aria-label="Urutkan"></select>
-</section>
-<main>
-  <p id="count" class="count" aria-live="polite"></p>
-  <ul id="list" class="list"></ul>
-  <div id="more" class="more"></div>
-  <div id="empty" class="empty" hidden>
-    <p>Tidak ada game yang cocok dengan filter ini.</p>
-    <button id="reset" class="btn ghost" type="button">Reset filter</button>
+<div class="shell">
+  <aside id="drawer" class="drawer" aria-label="Navigasi">
+    <div class="drawer-head">
+      <span class="brand">Dermaga Port</span>
+      <button id="drawer-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup menu"></button>
+    </div>
+    <nav id="drawer-nav" class="drawer-nav"></nav>
+  </aside>
+  <div id="scrim" class="scrim"></div>
+  <div class="content">
+    <header class="appbar">
+      <button id="menu" class="icon-btn tonal menu-btn" type="button" data-icon="menu" aria-label="Buka menu"></button>
+      <span class="appbar-title">Dermaga Port</span>
+    </header>
+    <div class="search" role="search">
+      <span class="lead" data-icon="search"></span>
+      <input id="q" type="search" placeholder="Cari game atau developer" aria-label="Cari" autocomplete="off">
+      <button id="clear" class="icon-btn" type="button" data-icon="close" aria-label="Hapus pencarian" hidden></button>
+    </div>
+    <section class="view-head">
+      <h1 id="view-title"></h1>
+      <span id="count" class="pill" aria-live="polite"></span>
+    </section>
+    <div class="controls">
+      <div id="seg" class="seg" role="group" aria-label="Urutkan"></div>
+      <button id="reverse" class="icon-btn tonal" type="button" data-icon="sort" aria-label="Balik urutan" aria-pressed="false"></button>
+    </div>
+    <main>
+      <div id="status" class="status" aria-live="polite"></div>
+      <ul id="list" class="list"></ul>
+      <div id="more" class="more"></div>
+      <div id="empty" class="empty" hidden>
+        <p>Tidak ada hasil yang cocok.</p>
+        <button id="reset" class="btn tonal" type="button">Reset pencarian</button>
+      </div>
+    </main>
+    <footer class="foot">Data dari komunitas NAPL (Fe2rr) dan sampul dari LaunchBox. Situs ini tidak berafiliasi dengan keduanya.</footer>
   </div>
-</main>
+</div>
+<button id="fab" class="fab" type="button" data-icon="up" aria-label="Kembali ke atas"></button>
+<div id="snack" class="snack" role="status"></div>
 <dialog id="sheet" aria-label="Detail game">
   <div class="sheet">
+    <div class="handle" aria-hidden="true"></div>
     <div class="sheet-bar">
-      <button id="close" class="btn ghost" type="button">Tutup</button>
-      <button id="share" class="btn ghost" type="button">Bagikan</button>
+      <button id="sheet-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup"></button>
+      <button id="share" class="icon-btn" type="button" data-icon="share" aria-label="Bagikan"></button>
     </div>
     <div id="sheet-body" class="sheet-body"></div>
   </div>
 </dialog>
-<script src="config.js?v=2"></script>
-<script src="data.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="config.js?v=3"></script>
+<script src="data.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
