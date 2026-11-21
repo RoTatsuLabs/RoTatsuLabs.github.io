@@ -1,5 +1,10 @@
 const CONFIG = {
-  title: "Daftar Port Android",
-  subtitle: "Katalog port komunitas untuk Android",
-  statusLabels: { works: "Berjalan", partial: "Sebagian", broken: "Belum jalan" }
+  title: "Dermaga Port",
+  subtitle: "Katalog port Android native buatan komunitas.",
+  sortLabels: {
+    added: "Terbaru ditambah",
+    updated: "Baru diperbarui",
+    compat: "Paling mulus",
+    az: "A-Z"
+  }
 };

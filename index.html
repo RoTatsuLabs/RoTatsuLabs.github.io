@@ -3,21 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daftar Port Android</title>
+<title>Dermaga Port</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
+<header class="hero">
   <h1 id="title"></h1>
-  <p id="subtitle"></p>
-  <input id="q" type="search" placeholder="Cari port" aria-label="Cari port">
-  <div id="cats" class="chips" role="group" aria-label="Kategori"></div>
+  <p id="subtitle" class="sub"></p>
+  <p id="stats" class="stats"></p>
+  <input id="q" class="field search" type="search" placeholder="Cari game, platform, atau developer" aria-label="Cari">
 </header>
+<nav id="platforms" class="platforms" aria-label="Platform"></nav>
+<section class="tools">
+  <select id="genre" class="field" aria-label="Genre"></select>
+  <select id="sort" class="field" aria-label="Urutkan"></select>
+</section>
 <main>
   <p id="count" class="count" aria-live="polite"></p>
   <ul id="list" class="list"></ul>
-  <p id="empty" class="empty" hidden>Tidak ada port yang cocok. Coba kata kunci atau kategori lain.</p>
+  <div id="more" class="more"></div>
+  <div id="empty" class="empty" hidden>
+    <p>Tidak ada game yang cocok dengan filter ini.</p>
+    <button id="reset" class="btn ghost" type="button">Reset filter</button>
+  </div>
 </main>
+<dialog id="sheet" aria-label="Detail game">
+  <div class="sheet">
+    <div class="sheet-bar">
+      <button id="close" class="btn ghost" type="button">Tutup</button>
+      <button id="share" class="btn ghost" type="button">Bagikan</button>
+    </div>
+    <div id="sheet-body" class="sheet-body"></div>
+  </div>
+</dialog>
 <script src="config.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
