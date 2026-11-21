@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daftar Port Android</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1 id="title"></h1>
+  <p id="subtitle"></p>
+  <input id="q" type="search" placeholder="Cari port" aria-label="Cari port">
+  <div id="cats" class="chips" role="group" aria-label="Kategori"></div>
+</header>
+<main>
+  <p id="count" class="count" aria-live="polite"></p>
+  <ul id="list" class="list"></ul>
+  <p id="empty" class="empty" hidden>Tidak ada port yang cocok. Coba kata kunci atau kategori lain.</p>
+</main>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
