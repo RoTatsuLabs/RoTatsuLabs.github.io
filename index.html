@@ -1,87 +1,86 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<title>Dermaga Port: katalog port Android native</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dermaga Port | Native Android game ports</title>
+<meta name="description" content="Browse native Android game ports with compatibility details and download links.">
+<meta name="theme-color" content="#0a0c11">
 <script>
-try { var t = localStorage.getItem("dermaga-port:theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+try { var p = JSON.parse(localStorage.getItem("dermaga-port:pref") || "{}"); if (p.theme === "light") document.documentElement.dataset.theme = "light"; if (p.motion === "full" || p.motion === "reduced") document.documentElement.dataset.motion = p.motion; } catch (e) {}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
-<a class="skip" href="#list">Lewati ke daftar game</a>
-<div id="app" class="app">
-  <nav id="rail" class="rail" aria-label="Navigasi utama">
-    <div class="rail-top">
-      <div class="rail-head">
-        <button id="rail-toggle" class="icon-btn" type="button" data-icon="menu" aria-label="Buka menu" aria-expanded="false" aria-controls="rail"></button>
-        <span class="rail-brand">Dermaga Port</span>
-      </div>
-      <button id="rail-fab" class="fab rail-fab" type="button"><span data-icon="search"></span><span class="fab-label">Cari game</span></button>
+<a class="skip" href="#main">Skip to content</a>
+<header id="header" class="site-header">
+  <div class="bar">
+    <a class="logo" href="#/" aria-label="Dermaga Port, home"><span>Dermaga</span><b>Port</b></a>
+    <nav id="nav" class="nav" aria-label="Primary">
+      <a href="#/" data-route="home">Home</a>
+      <a href="#/browse" data-route="browse">Browse</a>
+      <a href="#/apps" data-route="apps">Multi-game apps</a>
+      <a href="#/favorites" data-route="favorites">Saved <span id="fav-count" class="fav-count"></span></a>
+      <a href="#/about" data-route="about">About</a>
+      <span id="nav-ind" class="nav-ind" aria-hidden="true"></span>
+    </nav>
+    <div class="bar-actions">
+      <button id="open-search" class="icon-btn" type="button" aria-label="Search games (press /)"></button>
+      <button id="theme" class="icon-btn" type="button" aria-label="Switch to light theme"></button>
+      <button id="open-menu" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"></button>
     </div>
-    <div id="rail-nav" class="rail-nav"></div>
+  </div>
+</header>
+<div id="mobile-nav" class="mobile-nav" hidden>
+  <nav aria-label="Mobile">
+    <a href="#/" data-route="home" style="--i:0">Home</a>
+    <a href="#/browse" data-route="browse" style="--i:1">Browse</a>
+    <a href="#/apps" data-route="apps" style="--i:2">Multi-game apps</a>
+    <a href="#/favorites" data-route="favorites" style="--i:3">Saved games</a>
+    <a href="#/about" data-route="about" style="--i:4">About</a>
   </nav>
-  <div id="scrim" class="scrim"></div>
-  <div id="content" class="content">
-    <div class="page">
-      <header class="appbar">
-        <button id="menu" class="menu-btn" type="button" aria-expanded="false" aria-controls="rail"><span data-icon="menu"></span><span>Menu</span></button>
-        <p class="appbar-title">Dermaga Port</p>
-        <button id="theme" class="icon-btn" type="button" data-icon="auto"></button>
-      </header>
-      <div class="search" role="search">
-        <span class="lead" data-icon="search"></span>
-        <div class="field-wrap">
-          <input id="q" type="search" placeholder=" " autocomplete="off" enterkeyhint="search">
-          <label for="q">Cari game atau developer</label>
-        </div>
-        <button id="clear" class="icon-btn" type="button" data-icon="close" aria-label="Hapus pencarian" hidden></button>
-      </div>
-      <section class="view-head" aria-labelledby="view-title">
-        <h1 id="view-title"></h1>
-        <p id="count" class="count" aria-live="polite"></p>
-      </section>
-      <div class="controls">
-        <div id="seg" class="seg" role="group" aria-label="Urutkan daftar"></div>
-        <button id="reverse" class="icon-btn toggle" type="button" data-icon="sort" aria-label="Balik urutan" aria-pressed="false"></button>
-      </div>
-      <section id="recent" class="recent" aria-labelledby="recent-title" hidden>
-        <h2 id="recent-title">Terbaru ditambah</h2>
-        <ul id="carousel" class="carousel"></ul>
-      </section>
-      <main id="main">
-        <div id="status" class="status"></div>
-        <h2 id="list-title" class="sr-only">Daftar game</h2>
-        <ul id="list" class="list" tabindex="-1" aria-labelledby="list-title"></ul>
-        <div id="more" class="more"></div>
-        <div id="empty" class="empty" hidden>
-          <p id="empty-text"></p>
-          <button id="reset" class="btn tonal" type="button">Hapus pencarian</button>
-        </div>
-      </main>
-      <footer class="foot">Data dari komunitas NAPL (Fe2rr) dan sampul dari LaunchBox. Situs ini tidak berafiliasi dengan keduanya.</footer>
+</div>
+<main id="main" tabindex="-1">
+  <div class="wrap skeleton" aria-busy="true" aria-label="Loading the catalog">
+    <div class="skel bar-1"></div><div class="skel bar-2"></div>
+    <div class="skel-grid"><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div><div class="skel poster-s"></div></div>
+  </div>
+</main>
+<footer id="footer" class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="logo" href="#/" aria-label="Dermaga Port, home"><span>Dermaga</span><b>Port</b></a>
+      <p>A browsable catalog of native Android ports. Dermaga Port links to external projects and never hosts games, ROMs or builds.</p>
     </div>
+    <nav aria-label="Explore"><h2>Explore</h2><a href="#/browse">Browse games</a><a href="#/apps">Multi-game apps</a><a href="#/favorites">Saved games</a><a href="#/about">About</a></nav>
+    <nav aria-label="Resources"><h2>Resources</h2><a href="https://fe2rr.github.io/" target="_blank" rel="noopener noreferrer">NAPL data source</a><a href="https://github.com/RoTatsuLabs/RoTatsuLabs.github.io" target="_blank" rel="noopener noreferrer">Source code</a></nav>
+    <div class="foot-prefs"><h2>Display</h2><button id="pref-theme" class="link-btn" type="button">Theme: Dark</button><button id="pref-motion" class="link-btn" type="button">Motion: Follow device</button></div>
+  </div>
+  <div class="wrap foot-base"><p>Data from the NAPL community sheet. Cover art from LaunchBox. Not affiliated with either.</p></div>
+</footer>
+<div id="search" class="search-ov" hidden>
+  <div class="search-scrim"></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="s-title">
+    <div class="search-top"><h2 id="s-title">Search the catalog</h2><button id="s-close" class="icon-btn" type="button" aria-label="Close search"></button></div>
+    <div class="search-box">
+      <label class="sr-only" for="sq">Search games, developers or projects</label>
+      <input id="sq" type="text" role="combobox" aria-expanded="false" aria-controls="s-list" aria-autocomplete="list" placeholder="Search games, developers or projects" autocomplete="off" enterkeyhint="search">
+    </div>
+    <p id="s-label" class="s-label">Newly added</p>
+    <ul id="s-list" class="s-list" role="listbox" aria-label="Results"></ul>
+    <a id="s-all" class="s-all" href="#/browse" hidden>See all results</a>
   </div>
 </div>
-<button id="fab" class="fab fab-float" type="button"><span data-icon="search"></span><span class="fab-label">Cari game</span></button>
-<div id="snack" class="snack" role="status"></div>
-<dialog id="sheet" aria-labelledby="sheet-title">
-  <div class="sheet">
-    <div class="handle" aria-hidden="true"></div>
-    <div class="sheet-bar">
-      <button id="sheet-close" class="icon-btn" type="button" data-icon="close" aria-label="Tutup detail"></button>
-      <button id="share" class="icon-btn" type="button" data-icon="share" aria-label="Bagikan tautan"></button>
-    </div>
-    <div id="sheet-body" class="sheet-body"></div>
-  </div>
-</dialog>
-<script src="config.js?v=4"></script>
-<script src="data.js?v=4"></script>
-<script src="app.js?v=4" defer></script>
+<button id="to-top" class="to-top" type="button" aria-label="Back to top"></button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="config.js?v=5"></script>
+<script src="data.js?v=5"></script>
+<script src="lib.js?v=5"></script>
+<script src="ui.js?v=5"></script>
+<script src="pages.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
