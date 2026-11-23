@@ -102,8 +102,7 @@
     { key: "platform", title: "Platform", grouped: true },
     { key: "genre", title: "Genre" },
     { key: "decade", title: "Release decade", asc: true },
-    { key: "files", title: "Game files" },
-    { key: "works", title: "Reported status" }
+    { key: "files", title: "Game files" }
   ];
 
   function pass(g, f, skip) {
@@ -459,12 +458,12 @@
     };
     const ext = (href, t) => h("a", { href, target: "_blank", rel: "noopener noreferrer" }, t);
     return h("div", { class: "view about" },
-      wrap("page-head", crumbs([{ text: "Home", href: "#/" }, { text: "About" }]), h("h1", null, "About Dermaga Port"), h("p", { class: "lede" }, "A browsable catalog of native Android ports of console and PC games, built for finding the right port quickly.")),
+      wrap("page-head", crumbs([{ text: "Home", href: "#/" }, { text: "About" }]), h("h1", null, "About Android Ports Catalog"), h("p", { class: "lede" }, "A browsable catalog of native Android ports of console and PC games, built for finding the right port quickly.")),
       wrap("narrow prose",
-        reveal(h("section", null, h("h2", null, "Where the data comes from"), h("p", null, "Every entry is read live from the community sheet maintained by ", ext(NAPL, "NAPL"), " each time you open the site. Cover art comes from LaunchBox. Dermaga Port is an independent project and is not affiliated with either."))),
+        reveal(h("section", null, h("h2", null, "Where the data comes from"), h("p", null, "Every entry is read live from the community sheet maintained by ", ext(NAPL, "NAPL"), " each time you open the site. Cover art comes from LaunchBox. Android Ports Catalog (APC) is an independent project and is not affiliated with either."))),
         reveal(h("section", null, h("h2", null, "Reading a port card"), h("p", null, "Each game lists one or more ports. A card shows the developer, the version, when it was last updated, the controllers it supports, whether you must supply your own game files, and the status reported by the community. Open the card to reach the download or project page."))),
         reveal(h("section", null, h("h2", null, "Questions"), h("div", { class: "ports" },
-          faq("Does this site host games or files?", "No. Dermaga Port only links to external projects. It never hosts games, ROMs or port builds."),
+          faq("Does this site host games or files?", "No. APC only links to external projects. It never hosts games, ROMs or port builds."),
           faq("What does \"game files needed\" mean?", "Some ports are only an engine. They need data from your own legally owned copy of the game. Ports that ship their own content say so on the card."),
           faq("Why is a port marked partial or broken?", "The status is reported by the community in the source sheet. It can change as projects update, so check the project page for the latest."),
           faq("Where are my saved games stored?", "Only in this browser, on this device. Clearing site data removes them. Nothing is sent to a server."),
