@@ -9,7 +9,7 @@
   DP.onLeave = (fn) => leaves.push(fn);
   const runLeave = () => leaves.splice(0).forEach((f) => { try { f(); } catch (e) {} });
 
-  const FKEYS = ["platform", "genre", "decade", "files", "works"];
+  const FKEYS = ["platform", "genre", "decade", "files"];
   const uniq = (a) => [...new Set(a)];
 
   function getApps(games) {
@@ -51,8 +51,7 @@
         platform: g.platforms,
         genre: g.genres,
         decade: g.decade ? [g.decade] : [],
-        files: uniq(g.ports.map((p) => (p.files || "").trim()).filter(Boolean)),
-        works: uniq(g.ports.map((p) => (p.works || "").trim()).filter(Boolean))
+        files: uniq(g.ports.map((p) => (p.files || "").trim()).filter(Boolean))
       };
       g.fv = {};
       FKEYS.forEach((k) => {
@@ -142,7 +141,7 @@
       current = r;
       DP.setNav(r.name === "404" ? "" : r.name);
       const g = r.name === "game" && DP.state.bySlug.get(r.arg);
-      document.title = (g ? g.name : TITLES[r.name] || "Dermaga Port") + " | Dermaga Port";
+      document.title = (g ? g.name : TITLES[r.name] || "Android Ports Catalog") + " | Android Ports Catalog";
       const desc = $('meta[name="description"]');
       if (desc) desc.content = g ? g.name + " for Android: " + g.ports.length + (g.ports.length === 1 ? " port" : " ports") + " with developer, version and download details." : "Browse " + DP.num(DP.state.games.length) + " native Android game ports with compatibility details and download links.";
       DP.reveal(main);

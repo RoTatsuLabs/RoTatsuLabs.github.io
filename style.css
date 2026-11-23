@@ -54,8 +54,11 @@ h2 { font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1; font-weight: 800; 
 .site-header.scrolled { background: color-mix(in srgb, var(--bg) 84%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 1px 0 var(--line); }
 .site-header.hide { transform: translateY(-100%); }
 .bar { display: flex; align-items: center; gap: 24px; max-width: var(--max); height: 100%; margin: 0 auto; padding-inline: var(--pad); }
-.logo { display: inline-flex; gap: 6px; align-items: baseline; font-size: 1.6rem; font-weight: 800; line-height: 1; text-decoration: none; }
-.logo b { color: var(--accent); font-weight: 800; }
+.logo { display: inline-flex; gap: 10px; align-items: center; font-size: 1.6rem; font-weight: 800; line-height: 1; text-decoration: none; }
+.logo b { color: var(--accent); font-size: 1.45em; font-weight: 800; letter-spacing: 0.02em; }
+.logo small { display: none; font: 600 0.8125rem/1 var(--font-b); letter-spacing: 0.02em; text-transform: none; color: var(--muted); }
+@media (min-width: 600px) { .logo small { display: inline; } }
+.site-footer .logo small { display: inline; }
 .nav { position: relative; display: none; gap: 4px; margin-left: 16px; }
 .nav a { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; font-weight: 600; text-decoration: none; color: var(--muted); transition: color 0.25s; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
